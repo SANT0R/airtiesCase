@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+<head>
+    <meta charset="UTF-8">
+<style>
+  form {
+    padding-left:350px;
+    padding-top:100px;
+  }
+  #code {
+    margin-left:4px;
+    width:500px;
+    padding:20px;
+  }
+
+  button[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+    
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width:1100px;
+  margin-left:160px;
+  margin-top:50px;
+
+}
+.detail{
+   margin-left:160px;
+   width:1145px;
+   background-color: #f2f2f2;
+   border-radius: 5px;
+   margin-left:160px;
+  margin-top:50px;
+}
+table, th, td {
+  border: 1px solid white;
+  width:1145px;
+}
+
+</style>
+</head>
+
+
+  <body>
+
+    <div class="container">
+      <center><h1>Airties Project</h1></center>
+    </div>
+
+
+    <div class="detail">
+      <table>
+        <tr>
+          <th>İD</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Created Date</th>  
+        </tr>
+        {% for person in persons%}    <!--parsing our person data-->
+        <tr>
+          <td>{{person.id}}</td>
+          <td>{{person.firstName}}</td>    
+          <td>{{person.lastName}}</td>
+          <td>{{person.email}}</td>    
+          <td>{{person.createdDate}}</td>
+        </tr>
+      {% endfor %}
+      </table>
+    </div>
+
+    <form id="menu1" action="/admin/" method="POST">    <!--redirection to admin page for add new objects-->
+      {% csrf_token %}
+        <div style="margin-left:400px; padding:25px;">
+        <button  type="submit">Add Person</button>
+        </div>
+    </form>
+  </body>
+</html>
